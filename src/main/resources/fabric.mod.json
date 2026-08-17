@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "amoungusmod_kingdoms",
+  "version": "${version}",
+  "name": "amoungusmod_kingdoms",
+  "description": "This is the mod for the KingdomsSMP",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/amoungusmod_kingdoms/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": [
+      "com.kingdoms.amoungusmod_kingdoms.client.Amoungusmod_kingdomsDataGenerator"
+    ],
+    "client": [
+      "com.kingdoms.amoungusmod_kingdoms.client.Amoungusmod_kingdomsClient"
+    ],
+    "main": [
+      "com.kingdoms.amoungusmod_kingdoms.Amoungusmod_kingdoms"
+    ]
+  },
+  "mixins": [
+    "amoungusmod_kingdoms.mixins.json",
+    {
+      "config": "amoungusmod_kingdoms.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

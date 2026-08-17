@@ -1,0 +1,68 @@
+{
+  "call_meeting": {
+    "subtitle": "subtitles.amoungusmod_kingdoms.call_meeting",
+    "sounds": [
+      "amoungusmod_kingdoms:call_meeting"
+    ]
+  },
+  "report_sound": {
+    "subtitle": "subtitles.amoungusmod_kingdoms.report_sound",
+    "sounds": [
+      "amoungusmod_kingdoms:report_sound"
+    ]
+  },
+  "murder": {
+    "subtitle": "subtitles.amoungusmod_kingdoms.murder",
+    "sounds": [
+      "amoungusmod_kingdoms:murder"
+    ]
+  },
+  "start_sound": {
+    "subtitle": "subtitles.amoungusmod_kingdoms.start_sound",
+    "sounds": [
+      "amoungusmod_kingdoms:start_sound"
+    ]
+  },
+  "vote_sound": {
+    "subtitle": "subtitles.amoungusmod_kingdoms.vote_sound",
+    "sounds": [
+      "amoungusmod_kingdoms:vote_sound"
+    ]
+  },
+  "ejected": {
+    "subtitle": "subtitles.amoungusmod_kingdoms.ejected",
+    "sounds": [
+      "amoungusmod_kingdoms:ejected"
+    ]
+  },
+  "task_complete": {
+    "subtitle": "subtitles.amoungusmod_kingdoms.task_complete",
+    "sounds": [
+      "amoungusmod_kingdoms:task_complete"
+    ]
+  },
+  "victory": {
+    "subtitle": "subtitles.amoungusmod_kingdoms.victory",
+    "sounds": [
+      "amoungusmod_kingdoms:victory"
+    ]
+  },
+  "defeat": {
+    "subtitle": "subtitles.amoungusmod_kingdoms.defeat",
+    "sounds": [
+      "amoungusmod_kingdoms:defeat"
+    ]
+  },
+  "changesettingsown": {
+    "subtitle": "subtitles.amoungusmod_kingdoms.changesettingsown",
+    "sounds": [
+      "amoungusmod_kingdoms:changesettingsown"
+    ]
+  },
+  "changesettingup": {
+    "subtitle": "subtitles.amoungusmod_kingdoms.changesettingup",
+    "sounds": [
+      "amoungusmod_kingdoms:changesettingup"
+    ]
+  }
+}
