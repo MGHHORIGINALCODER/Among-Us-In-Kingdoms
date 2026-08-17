@@ -1,0 +1,46 @@
+{
+  "item.amoungusmod_kingdoms.emergency_meeting": "Call Meeting",
+  "item.amoungusmod_kingdoms.report_meeting": "Report",
+  "item.amoungusmod_kingdoms.murdered": "Kill",
+  "item.amoungusmod_kingdoms.start_button": "Start Game Of Sus",
+  "item.amoungusmod_kingdoms.vote_button": "VOTE",
+  "item.amoungusmod_kingdoms.vote_checker": "Check Votes",
+  "item.amoungusmod_kingdoms.sab": "Sabotage",
+  "item.amoungusmod_kingdoms.player_chibi_haley": "Haley Chibi",
+
+
+
+  "block.amoungusmod_kingdoms.death_block": "Death Block",
+  "block.amoungusmod_kingdoms.door_block": "Vent Block",
+
+
+  "subtitles.amoungusmod_kingdoms.call_meeting": "EMERGENCY MEETING CALLED",
+  "subtitles.amoungusmod_kingdoms.report_sound": "BODY FOUND",
+  "subtitles.amoungusmod_kingdoms.murder": "block place",
+  "subtitles.amoungusmod_kingdoms.start_sound": "Game Starts",
+  "subtitles.amoungusmod_kingdoms.ejected": "Player Ejected",
+  "subtitles.amoungusmod_kingdoms.task_complete": "Task Completed",
+  "subtitles.amoungusmod_kingdoms.victory": "Victory: Crewmates Win",
+  "subtitles.amoungusmod_kingdoms.defeat": "Defeat: Imposters Win",
+  "subtitles.amoungusmod_kingdoms.changesoundup": "Setting Changed",
+  "subtitles.amoungusmod_kingdoms.changesounddown": "Setting Changed",
+  "subtitles.amoungusmod_kingdoms.vote_button": "Voted",
+
+  "item.amoungusmod_kingdoms.task1": "Obtain a stack of Dirt",
+  "item.amoungusmod_kingdoms.task2": "Find the Haley Chibi",
+  "item.amoungusmod_kingdoms.task3": "Obtain 1 cod by fishing (using fishing rod in chest)",
+  "item.amoungusmod_kingdoms.task4": "Mine 15 Raw iron",
+  "item.amoungusmod_kingdoms.task5": "Obtain 10 cooked beef",
+  "item.amoungusmod_kingdoms.task6": "Find a Emerald Block (click on it with me!)",
+  "item.amoungusmod_kingdoms.task7": "Find a Pig ((maybe shift) Click on it with me!)",
+  "item.amoungusmod_kingdoms.task8": "Find a player (Click on the player with me!)",
+  "item.amoungusmod_kingdoms.task9": "Find a yellow bed (Shift Click on it with me!)",
+  "item.amoungusmod_kingdoms.task10": "Find a Cow (click on the cow With me!)",
+
+  "item.amoungusmod_kingdoms.cs_tasks": "Config Tasks",
+  "item.amoungusmod_kingdoms.cs_imposters": "Config Imposters",
+  "item.amoungusmod_kingdoms.cs_set": "Def Config",
+
+  "itemgroup.amoungusmod_kingdoms.g1": "Among Us - Kingdoms - MOD",
+  "itemgroup.amoungusmod_kingdoms.game_blocks_main": "Among Us - Kingdoms - GAME BLOCKS"
+}
