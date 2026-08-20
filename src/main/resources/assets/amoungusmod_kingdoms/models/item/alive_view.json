@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "amoungusmod_kingdoms:item/alive_view"
+  }
+}
