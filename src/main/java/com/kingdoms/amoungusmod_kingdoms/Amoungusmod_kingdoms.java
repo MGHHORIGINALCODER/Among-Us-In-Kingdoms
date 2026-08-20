@@ -49,12 +49,12 @@ public class Amoungusmod_kingdoms implements ModInitializer {
                 );
             }
 
-            // Late-joiners are automatically set to Spectator if a round is live
+
             if (Customstorage.ROUND_STARTED && !Customstorage.PLAYERS_IN_ROUNDS.contains(player) && player instanceof ServerPlayerEntity serverPlayer) {
                 serverPlayer.changeGameMode(GameMode.SPECTATOR);
             }
 
-            // If this is the host / first player, grant them the start item and trigger block update
+
             if (server.getCurrentPlayerCount() <= 1) {
                 Customstorage.Owner = player;
                 CommandManager commandManager = player.getWorld().getServer().getCommandManager();
@@ -69,10 +69,9 @@ public class Amoungusmod_kingdoms implements ModInitializer {
         ServerTickEvents.END_SERVER_TICK.register((server) -> {
             if (Customstorage.TIMER_ON) {
                 ++tickTimer;
-                if (tickTimer >= 20) { // Runs once per second
+                if (tickTimer >= 20) {
                     tickTimer = 0;
                     if (Customstorage.LENGTH_TIMER >= 0) {
-                        // Play audible warning at 5 seconds remaining
                         if (Customstorage.LENGTH_TIMER == 5) {
                             server.getPlayerManager().getPlayerList().forEach((player) -> {
                                 World world = player.getServerWorld();

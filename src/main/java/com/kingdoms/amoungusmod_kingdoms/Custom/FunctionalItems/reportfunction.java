@@ -28,12 +28,12 @@ public class reportfunction extends Item {
 
         UpdateAfterCall.DisableSelf(world, user.getBlockPos(), 500, ModBlocks.LOCKER_BLOCK);
 
-        // Check if the targeted block is an actual death marker and game allows kills
+
         if (blockState.isOf(ModBlocks.DEATH_BLOCK) && Customstorage.CAN_KILL) {
-            // Delete the death body marker by substituting it with Air
+
             world.setBlockState(context.getBlockPos(), Blocks.AIR.getDefaultState());
 
-            // Scan and print notices for every currently deceased player loop
+
             for (PlayerEntity p : world.getPlayers()) {
                 if (p.isDead()) {
                     MutableText message = Text.literal(p.getName().getString() + " Is Dead");
@@ -41,7 +41,7 @@ public class reportfunction extends Item {
                 }
             }
 
-            // Server-side meeting execution trigger
+
             if (!world.isClient) {
                 AutoRounds.CallMeeting(context.getPlayer(), world, context.getHand(), false);
                 return ActionResult.PASS;

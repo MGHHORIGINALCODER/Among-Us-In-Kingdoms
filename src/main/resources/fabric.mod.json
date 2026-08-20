@@ -1,10 +1,16 @@
 {
   "schemaVersion": 1,
   "id": "amoungusmod_kingdoms",
-  "version": "${version}",
-  "name": "amoungusmod_kingdoms",
-  "description": "This is the mod for the KingdomsSMP",
-  "authors": [],
+  "version": "2.5",
+  "name": "Among Us Mod - Was Made for Kingdoms",
+  "description": "Most Sound/Audio Assets is made from InnerSloth.(Mod Made by Ellie MG) This is the mod was originally for Kingdoms SMP, But now is public! 
+Special Thanks (Devs/BetaTesters):
+Kingdoms SMP,
+Haley_YT,
+ArtfulEnt,
+Kana,
+unburnablebook",
+  "authors": ["Main Dev: Ellie MG","Textures: ArtfulEnt","Betatester/Builder: Haley_YT","Betatester/Builder: Kana","Betatester/Builder: unburnablebook"],
   "contact": {},
   "license": "MIT",
   "icon": "assets/amoungusmod_kingdoms/icon.png",
@@ -28,8 +34,8 @@
     }
   ],
   "depends": {
-    "fabricloader": ">=${loader_version}",
+    "fabricloader": ">=0.15.11",
     "fabric-api": "*",
-    "minecraft": "${minecraft_version}"
+    "minecraft": "1.20.1"
   }
 }

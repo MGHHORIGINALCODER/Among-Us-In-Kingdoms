@@ -299,7 +299,7 @@ public class AutoRounds extends Block {
             Optional<Map.Entry<String, Long>> mostVoted = voteCounts.entrySet().stream()
                     .max(Map.Entry.comparingByValue());
 
-            // Check if skips win first
+
             if (mostVoted.isEmpty() || voteSkips > mostVoted.get().getValue()) {
                 world.playSound(
                         null,
