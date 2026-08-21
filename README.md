@@ -10,7 +10,7 @@ The mod includes multiple features and Audio from the original Game Among Us.
 # Discord
 Join the discord and contribute in art or other ways!
 
-![AmongUs_Java.png](../../../Pictures/AmongUs_Java.png)
+<img width="1024" height="1024" alt="AmongUs_Java" src="https://github.com/user-attachments/assets/efc8d8b6-e39d-4eec-ac07-0360eb879e23" />
 
 [Discord](https://discord.gg/3PfAsVY4gA)
 
