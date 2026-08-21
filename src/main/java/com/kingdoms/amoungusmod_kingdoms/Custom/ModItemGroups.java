@@ -46,6 +46,7 @@ public class ModItemGroups {
                         entries.add(ModItems.CONFIG_STICK_ENGINEERS);
                         entries.add(ModItems.CONFIG_STICK_SCIENTIST);
                         entries.add(ModItems.CONFIG_STICK_IMPOSTERS);
+                        entries.add(ModItems.PURP_EGG);
 
 
                     }).build());

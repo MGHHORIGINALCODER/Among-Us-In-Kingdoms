@@ -1,4 +1,4 @@
-package com.kingdoms.amoungusmod_kingdoms.client.Mixin;
+package com.kingdoms.amoungusmod_kingdoms.Mixin;
 
 import com.kingdoms.amoungusmod_kingdoms.Custom.FunctionalItems.Customstorage;
 import net.fabricmc.api.EnvType;

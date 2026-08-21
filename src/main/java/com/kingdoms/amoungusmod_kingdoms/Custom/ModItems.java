@@ -1,6 +1,7 @@
 package com.kingdoms.amoungusmod_kingdoms.Custom;
 
 import com.kingdoms.amoungusmod_kingdoms.Amoungusmod_kingdoms;
+import com.kingdoms.amoungusmod_kingdoms.Custom.Entitys.ModEntities;
 import com.kingdoms.amoungusmod_kingdoms.Custom.FunctionalItems.AlivePeople;
 import com.kingdoms.amoungusmod_kingdoms.Custom.FunctionalItems.ConfigEngineerSize;
 import com.kingdoms.amoungusmod_kingdoms.Custom.FunctionalItems.ConfigImposters;
@@ -30,8 +31,11 @@ import com.kingdoms.amoungusmod_kingdoms.Custom.Tasks.task6;
 import com.kingdoms.amoungusmod_kingdoms.Custom.Tasks.task7;
 import com.kingdoms.amoungusmod_kingdoms.Custom.Tasks.task8;
 import com.kingdoms.amoungusmod_kingdoms.Custom.Tasks.task9;
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.SpawnEggItem;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.minecraft.registry.Registries;
@@ -83,11 +87,14 @@ public class ModItems {
     public static void registerModItems() {
         Amoungusmod_kingdoms.LOGGER.info("Registering Mod items for: amoungusmod_kingdoms");
     }
+    public static Item PURP_EGG = registerItem("purp_egg",
+                                    new SpawnEggItem(ModEntities.PURP_ENTITY,0xfffff,0xfffff, new FabricItemSettings().maxCount(1)));
 
     static {
         VENT_BLOCK_ITEM = registerItem("door_block1", new BlockItem(ModBlocks.DOOR_BLOCK, new Item.Settings()));
         FIX_DOORS_ITEM = registerItem("fix_doors_item", new BlockItem(ModBlocks.FIX_DOOR, new Item.Settings()));
         AUTO_BLOCK_ITEM = registerItem("auto_block_item", new BlockItem(ModBlocks.AUTO_BLOCK, new Item.Settings()));
+
         TASK1 = registerItem("task1", new task1((new Item.Settings()).maxCount(1)));
         TASK2 = registerItem("task2", new task2((new Item.Settings()).maxCount(1)));
         TASK3 = registerItem("task3", new task3((new Item.Settings()).maxCount(1)));
@@ -98,6 +105,7 @@ public class ModItems {
         TASK8 = registerItem("task8", new task8((new Item.Settings()).maxCount(1)));
         TASK9 = registerItem("task9", new task9((new Item.Settings()).maxCount(1)));
         TASK10 = registerItem("task10", new task10((new Item.Settings()).maxCount(1)));
+
         CONFIG_STICK_TASKS = registerItem("cs_tasks", new ConfigTasks((new Item.Settings()).maxCount(1)));
         CONFIG_STICK_IMPOSTERS = registerItem("cs_imposters", new ConfigImposters((new Item.Settings()).maxCount(1)));
         CONFIG_STICK_SET = registerItem("cs_set", new SetConfig((new Item.Settings()).maxCount(1)));
@@ -108,7 +116,13 @@ public class ModItems {
         CONFIG_STICK_SCIENTIST = registerItem("cs_scientist", new ConfigScientistSize((new Item.Settings()).maxCount(1)));
         CONFIG_STICK_KILL_COOL = registerItem("cs_kill_cool", new ConfigKillCooldown((new Item.Settings()).maxCount(1)));
         CONFIG_STICK_VENT_TP = registerItem("cs_vent_tp", new ConfigRaidSize((new Item.Settings()).maxCount(1)));
-        // Handled the trailing field cut off from compilation source safely
+
+
         PLAYER_CHIBI_HALEY = registerItem("player_chibi_haley", new Item((new Item.Settings()).maxCount(1)));
+
+
+
+
+
     }
 }

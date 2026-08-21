@@ -2,18 +2,20 @@
 // Exported for Minecraft version 1.17+ for Yarn
 // Paste this class into your mod and generate all required imports
 
-package com.kingdoms.amoungusmod_kingdoms.Custom.Entitys;
+package com.kingdoms.amoungusmod_kingdoms.modle;
 
+import com.kingdoms.amoungusmod_kingdoms.Custom.Entitys.custom.TestEntity;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
-import net.minecraft.client.render.entity.model.EntityModel;
+import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.entity.Entity;
 
-public class test_entity extends EntityModel<Entity> {
+public class TestEntityModel<T extends TestEntity> extends SinglePartEntityModel<T> {
 	private final ModelPart Main;
-	public test_entity(ModelPart root) {
+	private final ModelPart Head;
+	public TestEntityModel(ModelPart root) {
 		this.Main = root.getChild("Main");
+		this.Head = root.getChild("Main");
 	}
 	public static TexturedModelData getTexturedModelData() {
 		ModelData modelData = new ModelData();
@@ -22,10 +24,15 @@ public class test_entity extends EntityModel<Entity> {
 		return TexturedModelData.of(modelData, 16, 16);
 	}
 	@Override
-	public void setAngles(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+	public void setAngles(TestEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 	}
 	@Override
 	public void render(MatrixStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
 		Main.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
+	}
+
+	@Override
+	public ModelPart getPart() {
+		return Main;
 	}
 }

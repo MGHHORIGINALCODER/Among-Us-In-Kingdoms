@@ -50,6 +50,9 @@ public class ModSounds {
         Amoungusmod_kingdoms.LOGGER.info("Registering Sounds for amoungusmod_kingdoms");
     }
 
+    public static Identifier PURP_AM_ID = new Identifier("amoungusmod_kingdoms", "purp_am");
+    public static SoundEvent PURP_AM = SoundEvent.of(PURP_AM_ID);
+
     static {
         CALL_MEETING = SoundEvent.of(CALL_MEETING_ID);
         REPORT_SOUND_ID = new Identifier("amoungusmod_kingdoms", "report_sound");
@@ -80,5 +83,8 @@ public class ModSounds {
         COUNTDOWN_SOUND = SoundEvent.of(COUNTDOWN_SOUND_ID);
         LOBBY_MUSIC_ID = new Identifier("amoungusmod_kingdoms", "lobby_music");
         LOBBY_MUSIC = SoundEvent.of(LOBBY_MUSIC_ID);
+
+
+
     }
 }

@@ -34,6 +34,7 @@
   "subtitles.amoungusmod_kingdoms.vent_sound": "Vent",
   "subtitles.amoungusmod_kingdoms.count_down_sound": "Count Down",
   "subtitles.amoungusmod_kingdoms.lobby_music": "Lobby Music",
+  "subtitles.amoungusmod_kingdoms.purp_am": "Purple noise",
 
   "item.amoungusmod_kingdoms.task1": "Obtain a stack of Dirt",
   "item.amoungusmod_kingdoms.task2": "Find the Haley Chibi",
@@ -45,6 +46,8 @@
   "item.amoungusmod_kingdoms.task8": "Find a player (Click on the player with me!)",
   "item.amoungusmod_kingdoms.task9": "Find a yellow bed (Shift Click on it with me!)",
   "item.amoungusmod_kingdoms.task10": "Find a Cow (click on the cow With me!)",
+
+  "item.amoungusmod_kingdoms.purp_egg": "Haley's Pet",
 
   "item.amoungusmod_kingdoms.cs_tasks": "Config Tasks",
   "item.amoungusmod_kingdoms.cs_imposters": "Config Imposters",
@@ -58,6 +61,8 @@
   "item.amoungusmod_kingdoms.cs_scientist": "Number of Scientist",
   "item.amoungusmod_kingdoms.data_stick": "Data Stick Position Vents",
   "item.amoungusmod_kingdoms.vent_use": "Use Vent",
+
+  "entity.amoungusmod_kingdoms.purp_entity": "Purple Among Us",
 
   "itemgroup.amoungusmod_kingdoms.g1": "Among Us - Kingdoms - MOD",
   "itemgroup.amoungusmod_kingdoms.game_blocks_main": "Among Us - Kingdoms - GAME BLOCKS"

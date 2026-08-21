@@ -88,5 +88,11 @@
     "sounds": [
       "amoungusmod_kingdoms:lobby_music"
     ]
+  },
+  "purp_am": {
+    "subtitle": "subtitles.amoungusmod_kingdoms.purp_am",
+    "sounds": [
+      "amoungusmod_kingdoms:purp_am"
+    ]
   }
 }

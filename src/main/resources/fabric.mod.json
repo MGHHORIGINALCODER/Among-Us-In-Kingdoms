@@ -20,7 +20,7 @@ unburnablebook",
       "com.kingdoms.amoungusmod_kingdoms.client.Amoungusmod_kingdomsDataGenerator"
     ],
     "client": [
-      "com.kingdoms.amoungusmod_kingdoms.client.Amoungusmod_kingdomsClient"
+      "com.kingdoms.amoungusmod_kingdoms.Amoungusmod_kingdomsClient"
     ],
     "main": [
       "com.kingdoms.amoungusmod_kingdoms.Amoungusmod_kingdoms"

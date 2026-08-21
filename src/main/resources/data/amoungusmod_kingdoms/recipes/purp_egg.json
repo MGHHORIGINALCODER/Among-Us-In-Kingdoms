@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "show_notification": true,
+  "pattern": [
+    "#M#",
+    "oNo",
+    "#A#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:pink_wool"
+    },
+    "M": {
+      "item": "minecraft:magenta_wool"
+    },
+    "o": {
+      "item": "minecraft:egg"
+    },
+    "N": {
+      "item": "minecraft:nether_star"
+    },
+    "A": {
+      "item": "amoungusmod_kingdoms:alive_view"
+    }
+  },
+  "result": {
+    "item": "amoungusmod_kingdoms:purp_egg",
+    "count": 1
+  }
+}

@@ -1,5 +1,8 @@
 package com.kingdoms.amoungusmod_kingdoms;
 
+import com.kingdoms.amoungusmod_kingdoms.Custom.Entitys.ModEntities;
+import com.kingdoms.amoungusmod_kingdoms.Custom.Entitys.custom.PurpEntity;
+import com.kingdoms.amoungusmod_kingdoms.Custom.Entitys.custom.TestEntity;
 import com.kingdoms.amoungusmod_kingdoms.Custom.ModBlocks;
 import com.kingdoms.amoungusmod_kingdoms.Custom.ModItemGroups;
 import com.kingdoms.amoungusmod_kingdoms.Custom.ModItems;
@@ -9,6 +12,7 @@ import com.kingdoms.amoungusmod_kingdoms.Custom.FunctionalItems.Customstorage;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.util.Formatting;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.GameMode;
@@ -36,6 +40,10 @@ public class Amoungusmod_kingdoms implements ModInitializer {
         ModBlocks.registerModBlocks();
         ModSounds.registerSounds();
         ModItemGroups.registerItemGroups();
+
+
+        FabricDefaultAttributeRegistry.register(ModEntities.TEST_ENTITY, TestEntity.createTestEntityA());
+        FabricDefaultAttributeRegistry.register(ModEntities.PURP_ENTITY, PurpEntity.createTestEntityA());
 
 
         ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
@@ -92,5 +100,7 @@ public class Amoungusmod_kingdoms implements ModInitializer {
                 }
             }
         });
+
+
     }
 }
