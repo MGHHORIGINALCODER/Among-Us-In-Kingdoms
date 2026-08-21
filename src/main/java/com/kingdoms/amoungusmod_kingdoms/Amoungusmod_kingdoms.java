@@ -36,6 +36,7 @@ public class Amoungusmod_kingdoms implements ModInitializer {
         ModBlocks.registerModBlocks();
         ModSounds.registerSounds();
         ModItemGroups.registerItemGroups();
+        Customstorage.AddAllINV_ITEMS();
 
         ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
             PlayerEntity player = handler.getPlayer();

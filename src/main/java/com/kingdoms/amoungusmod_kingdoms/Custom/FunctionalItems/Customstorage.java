@@ -1,7 +1,13 @@
 package com.kingdoms.amoungusmod_kingdoms.Custom.FunctionalItems;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.kingdoms.amoungusmod_kingdoms.Custom.ModItems;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.util.Formatting;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.BlockPos;
@@ -31,6 +37,7 @@ public class Customstorage {
     public static PlayerEntity Owner;
     public static Runnable TimerExacute = () -> {
     };
+
     public static boolean TIMER_ON = false;
     public static int LENGTH_TIMER = 20;
     public static String State_Timer = "CountDown: ";
@@ -43,7 +50,6 @@ public class Customstorage {
     }
 
     public static void SendTitleAndSubtitle(ServerPlayerEntity player, String Title, String Subtitle, int FadeIn, int StayOn, int FadeOut, Formatting ColorSub, Formatting StyleSub, Formatting ColorTitle, Formatting StyleTitle) {
-        // Minecraft ticks are 20 per second, multiply by 20 to translate seconds to ticks
         player.networkHandler.sendPacket(new TitleFadeS2CPacket(FadeIn * 20, StayOn * 20, FadeOut * 20));
 
         Text SubT = Text.literal(Subtitle).formatted(new Formatting[]{ColorSub, StyleSub});
@@ -58,5 +64,24 @@ public class Customstorage {
         TimerExacute = RunCode;
         TIMER_ON = true;
         State_Timer = StateTimerString;
+    }
+
+    public static List<Item> INVIS_ITEMS=new ArrayList<>();
+    // Comments are their to help Devs learn as well as me
+    public static void AddAllINV_ITEMS(){
+        for(Field field : ModItems.class.getFields()){ // Get all Field Arguments (Fields = Variable)
+            if(Item.class.isAssignableFrom(field.getType())){ // Checks if its A ITEM
+                try{
+                    Item item = (Item) field.get(null); // Gets the Item
+                    if(item!=null){
+                        INVIS_ITEMS.add(item); // Adds to the List
+                    }
+                } catch (IllegalAccessException e) {
+                    throw new RuntimeException(e);
+                }
+
+            }
+        }
+
     }
 }
