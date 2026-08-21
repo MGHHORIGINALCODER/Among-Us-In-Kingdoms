@@ -22,6 +22,8 @@ public class ModItemGroups {
                         entries.add(ModItems.VOTE);
                         entries.add(ModItems.VOTE_CHECKER);
                         entries.add(ModItems.SAB);
+                        entries.add(ModItems.VENT_USE);
+                        entries.add(ModItems.ALIVE_VIEW);
                         entries.add(ModItems.TASK1);
                         entries.add(ModItems.TASK2);
                         entries.add(ModItems.TASK3);
@@ -33,12 +35,17 @@ public class ModItemGroups {
                         entries.add(ModItems.TASK9);
                         entries.add(ModItems.TASK10);
                         entries.add(ModItems.PLAYER_CHIBI_HALEY);
-
-
+                        entries.add(ModItems.DATA_STICK);
                         entries.add(ModItems.CONFIG_STICK_TASKS);
-                        entries.add(ModItems.CONFIG_STICK_IMPOSTERS);
                         entries.add(ModItems.CONFIG_STICK_SET);
-                        entries.add(ModItems.VENT_BLOCK_ITEM);
+                        entries.add(ModItems.CONFIG_STICK_MEETING_CALL);
+                        entries.add(ModItems.CONFIG_STICK_MEETING_COOL);
+                        entries.add(ModItems.CONFIG_STICK_SAB_COOL);
+                        entries.add(ModItems.CONFIG_STICK_KILL_COOL);
+                        entries.add(ModItems.CONFIG_STICK_VENT_TP);
+                        entries.add(ModItems.CONFIG_STICK_ENGINEERS);
+                        entries.add(ModItems.CONFIG_STICK_SCIENTIST);
+                        entries.add(ModItems.CONFIG_STICK_IMPOSTERS);
 
 
                     }).build());
@@ -49,6 +56,8 @@ public class ModItemGroups {
                     .entries((displayContext, entries) -> {
                         entries.add(ModBlocks.DEATH_BLOCK);
                         entries.add(ModBlocks.DOOR_BLOCK);
+                        entries.add(ModItems.AUTO_BLOCK_ITEM);
+                        entries.add(ModItems.FIX_DOORS_ITEM);
 
 
                     }).build());

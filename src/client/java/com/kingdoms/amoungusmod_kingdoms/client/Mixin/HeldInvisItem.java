@@ -3,6 +3,10 @@ package com.kingdoms.amoungusmod_kingdoms.client.Mixin;
 import com.kingdoms.amoungusmod_kingdoms.Custom.FunctionalItems.Customstorage;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.network.ClientPlayerEntity;
+import net.minecraft.client.render.model.json.ModelTransformationMode;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.util.Arm;
 import org.spongepowered.asm.mixin.Mixin;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -21,7 +25,7 @@ public class HeldInvisItem {
     @Inject(
             method = "renderFirstPersonItem",
             at=@At("HEAD"),
-            cancellable = false
+            cancellable = true
     )
     private void hideItemHand(
             AbstractClientPlayerEntity player,

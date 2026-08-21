@@ -418,7 +418,7 @@ public class AutoRounds extends Block {
                                     );
 
                                     world.getPlayers().forEach(player1 -> {
-                                        Customstorage.SendTitleAndSubtitle((ServerPlayerEntity) player1,"Imposters Win!","",2,3,2,Formatting.RED,Formatting.BOLD,Formatting.RED,Formatting.BOLD);
+                                        Customstorage.SendTitleAndSubtitle((ServerPlayerEntity) player1,"Imposters Win!","",2,3,2,Formatting.WHITE, Formatting.BOLD,Formatting.RED,Formatting.BOLD);
                                     });
                                     RoundEnded(world,player,player.getActiveHand());
                                 }else{

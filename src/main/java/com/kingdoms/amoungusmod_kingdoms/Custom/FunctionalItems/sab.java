@@ -1,5 +1,6 @@
 package com.kingdoms.amoungusmod_kingdoms.Custom.FunctionalItems;
 
+import com.kingdoms.amoungusmod_kingdoms.Custom.FunctionalBlocks.UpdateAfterCall;
 import com.kingdoms.amoungusmod_kingdoms.Custom.ModBlocks;
 import com.kingdoms.amoungusmod_kingdoms.Custom.ModSounds;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -24,6 +25,7 @@ public class sab extends Item {
 
             for(PlayerEntity play : world.getPlayers()){
                 //play.playSound(ModSounds.CALL_MEETING);
+                UpdateAfterCall.DisableSelf(world,player.getBlockPos(),150,ModBlocks.LOCKER_BLOCK);
                 if (!Customstorage.IMPOSTERS.contains(play)) {
 
                     play.addStatusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 600, 12, false, false, true));

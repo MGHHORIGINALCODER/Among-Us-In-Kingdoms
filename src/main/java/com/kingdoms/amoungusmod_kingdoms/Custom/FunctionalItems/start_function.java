@@ -99,12 +99,12 @@ public class start_function extends Item {
                 commandManager = world.getServer().getCommandManager();
                 commandSource = world.getServer().getCommandSource();
                 playerName = play.getName().getString();
-                commandManager.executeWithPrefix(commandSource, "give " + playerName + " " + String.valueOf(Registries.ITEM.getId(Items.COOKED_BEEF)) + " 64");
+                commandManager.executeWithPrefix(commandSource, "give " + playerName + " " + String.valueOf(Registries.ITEM.getId(Items.REDSTONE)) + " 64");
 
                 world.getServer().getCommandManager().executeWithPrefix(world.getServer().getCommandSource(), "team join tagVis " + play.getName().getString());
 
                 if (play instanceof ServerPlayerEntity serverPlayerEntity) {
-                    Customstorage.SendTitleAndSubtitle(serverPlayerEntity, "Crewmate", "Complete Tasks and Find the Imposter", 5, 5, 5, Formatting.GREEN, Formatting.OBFUSCATED, Formatting.DARK_AQUA, Formatting.DARK_RED);
+                    Customstorage.SendTitleAndSubtitle(serverPlayerEntity, "Crewmate", "Complete Tasks and Find the Imposter", 5, 5, 5, Formatting.WHITE, Formatting.BOLD, Formatting.AQUA, Formatting.BOLD);
                     serverPlayerEntity.changeGameMode(GameMode.ADVENTURE);
                 }
             }
@@ -141,7 +141,7 @@ public class start_function extends Item {
                 Customstorage.VENTERS.add(ip);
 
                 if (ip instanceof ServerPlayerEntity serverPlayerEntity) {
-                    Customstorage.SendTitleAndSubtitle(serverPlayerEntity, "Imposter", "Kill all crewmates and be hidden", 5, 5, 5, Formatting.GREEN, Formatting.OBFUSCATED, Formatting.RED, Formatting.DARK_RED);
+                    Customstorage.SendTitleAndSubtitle(serverPlayerEntity, "Imposter", "Kill all crewmates and be hidden", 5, 5, 5, Formatting.WHITE, Formatting.BOLD, Formatting.RED, Formatting.BOLD);
                 }
 
                 ip.sendMessage(Text.literal("ROLE: Imposter : >\nTEAM:").styled((style) -> style.withColor(Formatting.RED)), false);

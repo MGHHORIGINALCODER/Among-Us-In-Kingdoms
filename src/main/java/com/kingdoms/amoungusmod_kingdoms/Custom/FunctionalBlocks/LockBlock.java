@@ -1,35 +1,29 @@
 package com.kingdoms.amoungusmod_kingdoms.Custom.FunctionalBlocks;
 
-import com.kingdoms.amoungusmod_kingdoms.Custom.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.datafixer.fix.ChunkPalettedStorageFix;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.state.property.Properties;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.random.Random;
 import net.minecraft.world.BlockView;
 
 public class LockBlock extends Block {
-    public LockBlock(Settings settings) {
+    private static final int TICK_DELAY = 60;
+    public static boolean On_ = false;
 
+    public LockBlock(AbstractBlock.Settings settings) {
         super(settings);
     }
-    private static final int TICK_DELAY = 60;
-    public static boolean On_=false;
+
+    // method_9506 determines if the block can emit redstone signals
     @Override
     public boolean emitsRedstonePower(BlockState state) {
-
         return true;
     }
 
+    // method_9524 calculates the actual weak redstone signal strength
     @Override
     public int getWeakRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {
-        if(On_) {
-            return 15;
-        }else{
-            return 0;
-        }
+        return On_ ? 15 : 0;
     }
 }

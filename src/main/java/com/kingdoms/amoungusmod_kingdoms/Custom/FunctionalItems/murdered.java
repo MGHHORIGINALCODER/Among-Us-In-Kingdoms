@@ -79,7 +79,7 @@ public class murdered extends Item {
                 });
 
                 world.playSound((PlayerEntity)null, player.getX(), player.getY(), player.getZ(), ModSounds.DEFEAT_SOUND, SoundCategory.PLAYERS, 1.0F, 1.0F);
-                world.getPlayers().forEach((player21) -> Customstorage.SendTitleAndSubtitle((ServerPlayerEntity)player21, "Imposters Win!", "", 2, 3, 2, Formatting.RED, Formatting.DARK_RED, Formatting.RED, Formatting.DARK_RED));
+                world.getPlayers().forEach((player21) -> Customstorage.SendTitleAndSubtitle((ServerPlayerEntity)player21, "Imposters Win!", "", 2, 3, 2, Formatting.WHITE, Formatting.BOLD, Formatting.RED, Formatting.BOLD));
                 AutoRounds.RoundEnded(world, player, player.getActiveHand());
             }
         }
