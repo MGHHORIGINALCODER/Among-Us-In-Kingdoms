@@ -1,5 +1,6 @@
 package com.kingdoms.amoungusmod_kingdoms.Custom.Tasks;
 
+import com.kingdoms.amoungusmod_kingdoms.Custom.FunctionalBlocks.AutoRounds;
 import com.kingdoms.amoungusmod_kingdoms.Custom.FunctionalItems.Customstorage;
 import com.kingdoms.amoungusmod_kingdoms.Custom.FunctionalItems.ImpCheck;
 import com.kingdoms.amoungusmod_kingdoms.Custom.ModSounds;
@@ -15,6 +16,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.world.GameMode;
 import net.minecraft.world.World;
@@ -65,18 +67,14 @@ public class task10 extends Item {
                         play.addStatusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 60, 10, false, false, false));
 
                     }
-                    world.playSound(
-                            null,
-                            player.getX(),
-                            player.getY(),
-                            player.getZ(),
-                            ModSounds.VICTORY_SOUND,
-                            SoundCategory.PLAYERS,
-                            1.0f,
-                            1.0f
+                    world.playSound((PlayerEntity)null, player.getX(), player.getY(), player.getZ(), ModSounds.VICTORY_SOUND, SoundCategory.PLAYERS, 1.0F, 1.0F);
+
+                    world.getPlayers().forEach((player1) ->
+                            Customstorage.SendTitleAndSubtitle((ServerPlayerEntity)player1, "Crewmates Win!", "", 2, 3, 2, Formatting.DARK_AQUA, Formatting.DARK_RED, Formatting.DARK_AQUA, Formatting.DARK_RED)
                     );
-                    MutableText message2 = Text.literal("Crewmate Wins!");
-                    world.getServer().getPlayerManager().broadcast(message2, false);
+
+                    AutoRounds.RoundEnded(world, player, player.getActiveHand());
+
                 }
             }
 
