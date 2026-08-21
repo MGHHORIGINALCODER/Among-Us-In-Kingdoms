@@ -7,11 +7,16 @@
   "item.amoungusmod_kingdoms.vote_checker": "Check Votes",
   "item.amoungusmod_kingdoms.sab": "Sabotage",
   "item.amoungusmod_kingdoms.player_chibi_haley": "Haley Chibi",
+  "item.amoungusmod_kingdoms.auto_block_item": "Auto Block",
+  "item.amoungusmod_kingdoms.alive_view": "See Alive",
+
 
 
 
   "block.amoungusmod_kingdoms.death_block": "Death Block",
   "block.amoungusmod_kingdoms.door_block": "Vent Block",
+  "block.amoungusmod_kingdoms.fix_door": "Fix Doors",
+  "block.amoungusmod_kingdoms.auto_block": "Auto Block",
 
 
   "subtitles.amoungusmod_kingdoms.call_meeting": "EMERGENCY MEETING CALLED",
@@ -25,6 +30,10 @@
   "subtitles.amoungusmod_kingdoms.changesoundup": "Setting Changed",
   "subtitles.amoungusmod_kingdoms.changesounddown": "Setting Changed",
   "subtitles.amoungusmod_kingdoms.vote_button": "Voted",
+  "subtitles.amoungusmod_kingdoms.fix_sound": "Doors Open",
+  "subtitles.amoungusmod_kingdoms.vent_sound": "Vent",
+  "subtitles.amoungusmod_kingdoms.count_down_sound": "Count Down",
+  "subtitles.amoungusmod_kingdoms.lobby_music": "Lobby Music",
 
   "item.amoungusmod_kingdoms.task1": "Obtain a stack of Dirt",
   "item.amoungusmod_kingdoms.task2": "Find the Haley Chibi",
@@ -39,7 +48,16 @@
 
   "item.amoungusmod_kingdoms.cs_tasks": "Config Tasks",
   "item.amoungusmod_kingdoms.cs_imposters": "Config Imposters",
+  "item.amoungusmod_kingdoms.cs_meeting_calls": "Config Meeting Usage",
+  "item.amoungusmod_kingdoms.cs_meeting_cool": "Config Meeting CoolDown",
+  "item.amoungusmod_kingdoms.cs_sab_cool": "Config Sabotage CoolDown",
+  "item.amoungusmod_kingdoms.cs_kill_cool": "Config Kill CoolDown",
+  "item.amoungusmod_kingdoms.cs_vent_tp": "Config Vent TP Size",
   "item.amoungusmod_kingdoms.cs_set": "Def Config",
+  "item.amoungusmod_kingdoms.cs_engineers": "Number of Engineers",
+  "item.amoungusmod_kingdoms.cs_scientist": "Number of Scientist",
+  "item.amoungusmod_kingdoms.data_stick": "Data Stick Position Vents",
+  "item.amoungusmod_kingdoms.vent_use": "Use Vent",
 
   "itemgroup.amoungusmod_kingdoms.g1": "Among Us - Kingdoms - MOD",
   "itemgroup.amoungusmod_kingdoms.game_blocks_main": "Among Us - Kingdoms - GAME BLOCKS"

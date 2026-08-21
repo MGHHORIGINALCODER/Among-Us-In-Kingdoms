@@ -64,5 +64,29 @@
     "sounds": [
       "amoungusmod_kingdoms:changesettingup"
     ]
+  },
+  "fix_sound": {
+    "subtitle": "subtitles.amoungusmod_kingdoms.fix_sound",
+    "sounds": [
+      "amoungusmod_kingdoms:fix_sound"
+    ]
+  },
+  "vent_sound": {
+    "subtitle": "subtitles.amoungusmod_kingdoms.vent_sound",
+    "sounds": [
+      "amoungusmod_kingdoms:vent_sound"
+    ]
+  },
+  "count_down_sound": {
+    "subtitle": "subtitles.amoungusmod_kingdoms.count_down_sound",
+    "sounds": [
+      "amoungusmod_kingdoms:count_down_sound"
+    ]
+  },
+  "lobby_music": {
+    "subtitle": "subtitles.amoungusmod_kingdoms.lobby_music",
+    "sounds": [
+      "amoungusmod_kingdoms:lobby_music"
+    ]
   }
 }
