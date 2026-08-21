@@ -249,6 +249,7 @@ public class AutoRounds extends Block {
                             1.0f
                     );
                 });
+                UpdateAfterCall.DisableSelf(world,player.getBlockPos(),150,ModBlocks.LOCKER_BLOCK);
 
 
 

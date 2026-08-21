@@ -66,12 +66,15 @@ public class murdered extends Item {
                     play.getInventory().clear();
                     play.addStatusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 60, 10, false, false, false));
                     if (play instanceof ServerPlayerEntity sp) {
-                        sp.changeGameMode(GameMode.ADVENTURE);
+                        sp.changeGameMode(GameMode.SURVIVAL);
                     }
                 }
 
                 // Global lobby teleport loop execution
                 world.getPlayers().forEach((player2) -> {
+                    if(player2 instanceof  ServerPlayerEntity ppps){
+                        ppps.changeGameMode(GameMode.SURVIVAL);
+                    }
                     CommandManager commandManager = world.getServer().getCommandManager();
                     ServerCommandSource commandSource = world.getServer().getCommandSource();
                     String playerName = player2.getName().getString(); // Converted toString() safely to getString() for clean translation

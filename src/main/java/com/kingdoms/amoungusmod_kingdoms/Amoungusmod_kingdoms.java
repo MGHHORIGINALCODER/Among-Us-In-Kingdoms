@@ -81,7 +81,7 @@ public class Amoungusmod_kingdoms implements ModInitializer {
                         }
 
                         // Broadcast Countdown to Action Bar in Dark Red
-                        server.getPlayerManager().broadcast(Text.literal(Customstorage.State_Timer + Customstorage.LENGTH_TIMER).formatted(Formatting.DARK_RED), true);
+                        server.getPlayerManager().broadcast(Text.literal(Customstorage.State_Timer + Customstorage.LENGTH_TIMER).formatted(Formatting.WHITE).formatted(Formatting.BOLD), true);
                         --Customstorage.LENGTH_TIMER;
                     } else {
                         // Reset and run the scheduled timer task
