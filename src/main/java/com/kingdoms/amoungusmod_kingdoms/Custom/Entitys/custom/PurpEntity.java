@@ -16,6 +16,7 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
+import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -26,10 +27,11 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Formatting;
+import net.minecraft.world.EntityView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class PurpEntity extends AnimalEntity {
+public class PurpEntity extends TameableEntity {
 
     // Animation Controllers
     public final AnimationState idleAnimationState = new AnimationState();
@@ -39,100 +41,48 @@ public class PurpEntity extends AnimalEntity {
 
     // Isolated system tracking clock registers
     private int idleAnimationTimeout = 0;
-    private int phaseTicks = 0;
+    private int pticks;
     private int tick = 0;
     private int seconds = 0;
+    private boolean IsSitting=false;
+    private boolean TimerOn=false;
+    private int TimerLength=0;
+    private Runnable runnableEx;
+
+    @Override
+    public EntityView method_48926() {
+        return this.getWorld();
+    }
+
+
 
     public enum SitState { STANDING, SITTING_DOWN, SITTING_IDLE, SITTING_UP }
 
-    // Data Trackers for Server -> Client Multi-player Packet Sync
-    private static final TrackedData<Integer> SIT_STATE_ID = DataTracker.registerData(
-            PurpEntity.class, TrackedDataHandlerRegistry.INTEGER
-    );
 
-    private static final int SIT_DOWN_DURATION = 15; // 0.75 Seconds
+
+    private static final int SIT_DOWN_DURATION = 15;
     private static final int SIT_UP_DURATION = 15;
 
-    public PurpEntity(EntityType<? extends AnimalEntity> entityType, World world) {
+    public PurpEntity(EntityType<? extends TameableEntity> entityType, World world) {
         super(entityType, world);
     }
 
-    @Override
-    protected void initDataTracker() {
-        super.initDataTracker();
-        this.dataTracker.startTracking(SIT_STATE_ID, SitState.STANDING.ordinal());
-    }
 
-    public SitState getCurrentState() {
-        return SitState.values()[this.dataTracker.get(SIT_STATE_ID)];
-    }
 
-    public void setCurrentState(SitState state) {
-        this.dataTracker.set(SIT_STATE_ID, state.ordinal());
-    }
 
-    // Client Listener intercepts network shifts to swap animations smoothly
-    @Override
-    public void onTrackedDataSet(TrackedData<?> data) {
-        if (this.getWorld().isClient() && SIT_STATE_ID.equals(data)) {
-            SitState newState = getCurrentState();
-            switch (newState) {
-                case SITTING_DOWN -> {
-                    this.sitUpState.stop();
-                    this.sitIdleState.stop();
-                    this.sitDownState.start(this.age);
-                }
-                case SITTING_IDLE -> {
-                    this.sitDownState.stop();
-                    this.sitUpState.stop();
-                    this.sitIdleState.start(this.age);
-                }
-                case SITTING_UP -> {
-                    this.sitDownState.stop();
-                    this.sitIdleState.stop();
-                    this.sitUpState.start(this.age);
-                }
-                case STANDING -> {
-                    this.sitUpState.stop();
-                    this.sitDownState.stop();
-                    this.sitIdleState.stop();
-                }
-            }
-        }
-        super.onTrackedDataSet(data);
-    }
+
+
 
     public static DefaultAttributeContainer.Builder createTestEntityA(){
         return MobEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 1000)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2f);
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2f)
+                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE,2f)
+                .add(EntityAttributes.GENERIC_ATTACK_KNOCKBACK,2f);
+
     }
 
-    private void handleAnimationSequence() {
-        SitState state = getCurrentState();
-        if (state == SitState.STANDING) return;
 
-        phaseTicks++;
-
-        switch (state) {
-            case SITTING_DOWN:
-                if (phaseTicks >= SIT_DOWN_DURATION) {
-                    this.setCurrentState(SitState.SITTING_IDLE);
-                    this.phaseTicks = 0;
-                }
-                break;
-
-            case SITTING_UP:
-                if (phaseTicks >= SIT_UP_DURATION) {
-                    this.setCurrentState(SitState.STANDING);
-                    this.phaseTicks = 0;
-                }
-                break;
-
-            default:
-                break;
-        }
-    }
 
     private void setUpAnimationStates(){
         if(this.idleAnimationTimeout <= 0){
@@ -143,12 +93,8 @@ public class PurpEntity extends AnimalEntity {
         }
     }
 
-    // Unified helper method checks for physical drift or neurological path intentions
-    public boolean IsMoving(){
-        boolean physicalVelocity = this.getVelocity().horizontalLengthSquared() > 0.002D;
-        boolean brainNavigation = this.getTarget() != null || !this.getNavigation().isIdle();
-        return physicalVelocity || brainNavigation;
-    }
+
+
 
     @Override
     public boolean cannotDespawn() {
@@ -158,53 +104,26 @@ public class PurpEntity extends AnimalEntity {
     @Override
     public void tick() {
         super.tick();
-
-        // 1. Client-Side Rendering Framework Loop
-        if(this.getWorld().isClient()){
+        if(this.getWorld().isClient){
             setUpAnimationStates();
-            handleAnimationSequence();
         }
+        if(TimerOn) {
 
-        // 2. Server-Side Logical Simulation Loops
-        if (!this.getWorld().isClient()) {
-            SitState state = getCurrentState();
+            tick++;
+            if (tick >= 20) {
+                tick = 0;
+                seconds++;
+                if(seconds>=TimerLength){
+                    seconds=0;
+                    TimerOn=false;
+                    TimerLength=0;
+                    runnableEx.run();
 
-            if (!this.getWorld().isClient()) {
-
-
-                if (state == SitState.STANDING) {
-                    tick++;
-                    if (tick >= 20) {
-                        tick = 0;
-                        seconds++;
-                        if (seconds >= 10 && !this.IsMoving()) {
-                            this.setCurrentState(SitState.SITTING_DOWN);
-                            this.phaseTicks = 0;
-                            this.seconds = 0;
-                        }
-                    }
-                } else if (state == SitState.SITTING_IDLE) {
-                    // Only trigger standing up via movement if it's already sitting idle
-                    if (this.IsMoving()) {
-                        this.setCurrentState(SitState.SITTING_UP);
-                        this.phaseTicks = 0;
-                        this.seconds = 0;
-                    }
-                } else {
-                    // If the state is SITTING_DOWN or SITTING_UP, freeze all timers
-                    tick = 0;
-                    seconds = 0;
                 }
-            }
 
-
-            // Detect movement and transition back up
-            if (this.IsMoving() && state == SitState.SITTING_IDLE) {
-                this.setCurrentState(SitState.SITTING_UP);
-                this.phaseTicks = 0;
-                this.seconds = 0;
             }
         }
+
     }
 
     // Freezes motor controls so the mob stays in place while sitting down
@@ -212,65 +131,82 @@ public class PurpEntity extends AnimalEntity {
     @Override
     public void mobTick() {
         super.mobTick();
-        SitState state = getCurrentState();
 
-        // CHANGED: Removed SITTING_UP from blocking navigation
-        if (state == SitState.SITTING_DOWN || state == SitState.SITTING_IDLE) {
-            this.getNavigation().stop();
-        }
-    }
-
-    // 2. Only freeze physics and velocity if it's sitting down or sitting idle
-    @Override
-    public void travel(net.minecraft.util.math.Vec3d movementInput) {
-        SitState state = getCurrentState();
-
-        // CHANGED: Allows natural movement inputs to calculate when state shifts to SITTING_UP
-        if (state == SitState.SITTING_DOWN || state == SitState.SITTING_IDLE) {
-            super.travel(net.minecraft.util.math.Vec3d.ZERO);
-        } else {
-            super.travel(movementInput);
-        }
     }
 
 
-    // Clicking toggles sitting manually over networks
+
+
+
+
     @Override
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
-        // Only run logic on the server side to handle registry changes safely
-        if (hand == Hand.MAIN_HAND && !this.getWorld().isClient()) {
-            SitState state = this.getCurrentState();
+        ItemStack itemStack = player.getStackInHand(hand);
+        if(!this.isTamed()){
+            if(isBreedingItem(itemStack)){
+                this.setOwner(player);
+                this.setTamed(true);
+                return ActionResult.SUCCESS;
 
-            if (state == SitState.STANDING) {
-                // Player clicks while standing -> Go down
-                this.setCurrentState(SitState.SITTING_DOWN);
-                this.phaseTicks = 0; // Reset frame timer for sit down
-                return ActionResult.SUCCESS;
             }
-            else if (state == SitState.SITTING_IDLE) {
-                // Player clicks while sitting down -> FORCE UNSIT (Stand Up)
-                this.setCurrentState(SitState.SITTING_UP);
-                this.phaseTicks = 0; // Reset frame timer for sit up animation sequence
-                return ActionResult.SUCCESS;
-            }
+            return ActionResult.PASS;
         }
-        return super.interactMob(player, hand);
+
+        if(this.isOwner(player) && !IsSitting){
+            this.getNavigation().stop();
+            this.idleAnimationState.stop();
+            this.sitDownState.start(age);
+            this.setSitting(true);
+            TimerLength=SIT_DOWN_DURATION;
+            TimerOn=true;
+            runnableEx=()->{
+                this.sitDownState.stop();
+                this.sitIdleState.start(age);
+            };
+            IsSitting=true;
+            return ActionResult.SUCCESS;
+
+
+        }
+        if(this.isOwner(player) && IsSitting){
+
+            this.sitIdleState.stop();
+            this.sitUpState.start(age);
+            TimerLength=SIT_UP_DURATION;
+            TimerOn=true;
+            runnableEx=()->{
+                this.sitDownState.stop();
+                this.idleAnimationState.start(age);
+                this.setSitting(false);
+            };
+            IsSitting=false;
+            return ActionResult.SUCCESS;
+
+
+        }
+        return ActionResult.PASS;
+
     }
+
+
 
 
     @Override
     protected void initGoals() {
         this.goalSelector.add(0, new SwimGoal(this));
         this.goalSelector.add(1, new FollowParentGoal(this, 1.4D));
-        this.goalSelector.add(2, new TemptGoal(this, 1.25D, Ingredient.ofItems(Items.AMETHYST_SHARD), false));
-        this.goalSelector.add(3, new AnimalMateGoal(this, 1.0D));
-        this.goalSelector.add(4, new WanderAroundGoal(this, 1.0D));
-        this.goalSelector.add(5, new LookAtEntityGoal(this, PlayerEntity.class, 4f));
+        this.goalSelector.add(2,new TrackOwnerAttackerGoal(this));
+        this.goalSelector.add(3,new FollowOwnerGoal(this,1.2D,1,30,false));
+        this.goalSelector.add(4, new AttackWithOwnerGoal(this));
+        this.goalSelector.add(4, new TemptGoal(this, 1.25D, Ingredient.ofItems(Items.AMETHYST_SHARD), false));
+        this.goalSelector.add(5, new AnimalMateGoal(this, 1.0D));
+        this.goalSelector.add(6, new WanderAroundGoal(this, 1.0D));
+        this.goalSelector.add(7, new LookAtEntityGoal(this, PlayerEntity.class, 4f));
     }
 
     @Override
     protected void updateLimbs(float posDelta) {
-        float f = this.getPose() == EntityPose.STANDING && getCurrentState() == SitState.STANDING ? Math.min(posDelta * 6.0f, 1.0f) : 0.0f;
+        float f = this.getPose() == EntityPose.STANDING ? Math.min(posDelta * 6.0f, 1.0f) : 0.0f;
         this.limbAnimator.updateLimbs(f, 0.2f);
     }
 

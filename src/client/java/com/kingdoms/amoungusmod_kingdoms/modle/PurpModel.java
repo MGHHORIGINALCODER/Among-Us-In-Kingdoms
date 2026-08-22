@@ -44,19 +44,11 @@ public class PurpModel<T extends PurpEntity> extends SinglePartEntityModel<T>  {
 
 		this.animateMovement(ModAnimations.walking, limbSwing, limbSwingAmount, 1f, 1f);
 		this.updateAnimation(entity.idleAnimationState,ModAnimations.stopwalking,ageInTicks,1f);
-		// Check the entity's current state to dynamically alter playback speed
-		if (entity.getCurrentState() == PurpEntity.SitState.SITTING_DOWN) {
-			// Plays the sitting down animation forward at standard speed (1.0f)
-			this.updateAnimation(entity.sitDownState, ModAnimations.sit, ageInTicks, 1.0f);
-		}
-		else if (entity.getCurrentState() == PurpEntity.SitState.SITTING_UP) {
-			// Plays the exact same sitting animation completely in reverse (-1.0f) to look like standing up!
-			this.updateAnimation(entity.sitUpState, ModAnimations.gettingup_purp, ageInTicks, 1.0f);
-		}
-		else if (entity.getCurrentState() == PurpEntity.SitState.SITTING_IDLE) {
-			// Loops your resting/stopwalking posture while fully settled
-			this.updateAnimation(entity.sitIdleState, ModAnimations.idlingsit_purp, ageInTicks, 1.0f);
-		}
+
+		this.updateAnimation(entity.sitDownState, ModAnimations.sit, ageInTicks, 1.0f);
+		this.updateAnimation(entity.sitUpState, ModAnimations.gettingup_purp, ageInTicks, 1.0f);
+		this.updateAnimation(entity.sitIdleState, ModAnimations.idlingsit_purp, ageInTicks, 1.0f);
+
 	}
 
 
