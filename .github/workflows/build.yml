@@ -29,8 +29,10 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: Artifacts
-          path: release-artifacts/
+          path: build/libs/
+      - name: where am i
+        run: ls -la build/libs/
       - name: upload to release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release upload "${{ github.event.release.tag_name }}" release-artifacts/*.jar --clobber
+        run: gh release upload "${{ github.event.release.tag_name }}" build/libs/*.jar --clobber
